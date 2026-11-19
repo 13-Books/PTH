@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plain Text Humans</title>
+  <meta name="description" content="Plain Text Humans: we still write in plain text — and MarkBreak manuscripts that say what they are and where they break." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --field: #fff;
+      --ink: #000;
+      --muted: #222;
+      --link: #000;
+      --rule: #000;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
+      background: var(--field);
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 1.02rem;
+    }
+    a, a:visited {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+    a:hover { color: var(--ink); }
+
+    .wrap {
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 1rem;
+      row-gap: 0.2rem;
+      margin: 0 0 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+      animation: in 0.45s ease both;
+    }
+    @media (max-width: 640px) {
+      .menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 400px) {
+      .menu { grid-template-columns: 1fr; }
+    }
+    .menu a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .menu a::before {
+      content: "→ ";
+      color: var(--link);
+    }
+    .menu a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+    .menu a.out::after { content: " ↗"; color: var(--muted); font-size: 0.85em; }
+
+    .brand {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 600;
+      font-size: clamp(1.55rem, 4.2vw, 2.15rem);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0 0 0.85rem;
+      display: inline;
+      background: #000;
+      color: #fff;
+      padding: 0.1em 0.28em;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      animation: in 0.5s ease 0.05s both;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .brand.is-fluo { color: #000; border: none; outline: none; }
+    h1.lede {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin: 1.1rem 0 1.75rem;
+      max-width: 40rem;
+      animation: in 0.5s ease 0.1s both;
+    }
+
+    .note {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin: 1rem 0 0;
+      padding: 0.65rem 0 0.65rem 0.85rem;
+      border-left: 2px solid #000;
+      max-width: 36rem;
+    }
+    .note a {
+      font-weight: 600;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 0 1.75rem;
+      animation: in 0.5s ease 0.18s both;
+    }
+    .cta a {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.8rem;
+      color: #fff;
+      background: #000;
+      border: 1px solid #000;
+      text-decoration: none;
+      padding: 0.35rem 0.65rem;
+      transition: background 0.12s ease, color 0.12s ease;
+    }
+    .cta a.is-fluo { color: #000; border-color: transparent; outline: none; }
+
+    section {
+      margin: 0 0 1.65rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--rule);
+      animation: in 0.45s ease both;
+    }
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.24s; }
+    section:nth-of-type(3) { animation-delay: 0.28s; }
+    section:nth-of-type(4) { animation-delay: 0.32s; }
+    section:nth-of-type(5) { animation-delay: 0.36s; }
+    section:nth-of-type(6) { animation-delay: 0.4s; }
+
+    section h2 {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin: 0 0 0.75rem;
+      display: inline;
+      color: #fff;
+      background: #000;
+      padding: 0.14em 0.35em;
+      line-height: 1.7;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    section h2.is-fluo { color: #000; border: none; outline: none; }
+
+    .menu a,
+    a {
+      transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+    }
+    .menu a.is-fluo,
+    a.is-fluo {
+      color: #000;
+      text-decoration: none;
+      border-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
+
+    section p, section li {
+      color: var(--muted);
+      margin: 0.55rem 0;
+    }
+    section ul { padding-left: 1.15rem; margin: 0.25rem 0; }
+    blockquote {
+      margin: 0.65rem 0;
+      padding: 0;
+      font-size: 1.08rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    code {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.86em;
+      background: transparent;
+      padding: 0.06em 0.28em;
+      border: 1px solid #000;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    code.is-fluo {
+      border-color: transparent;
+      outline: none;
+      box-shadow: none;
+      color: #000;
+    }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    footer .copy { margin: 0; }
+
+    @keyframes in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav class="menu" aria-label="On this page">
+      <a href="#plain">Why plain text</a>
+      <a href="#mission">The mission</a>
+      <a href="#broke">What we broke</a>
+      <a href="#refused">What we refused</a>
+      <a href="#name">The name</a>
+      <a href="#creed">Our creed</a>
+      <a href="shop.html">Shop</a>
+      <a class="out" href="https://markbreak.com">Meet MarkBreak</a>
+      <a class="out" href="https://markbreak.app">Write with us</a>
+    </nav>
+
+    <p class="brand">Plain Text Humans</p>
+    <h1 class="lede">
+      We are the humans who still write in plain text — files any machine can open,
+      any person can read, and no app can hold&nbsp;hostage.
+    </h1>
+    <div class="cta">
+      <a href="https://markbreak.com">Meet MarkBreak ↗</a>
+      <a href="shop.html">Shop</a>
+      <a href="https://markbreak.app">Write with us ↗</a>
+    </div>
+
+    <section id="plain">
+      <h2>Why plain text</h2>
+      <p>
+        Plain text is the oldest file format that still wins. It does not confuse
+        what a sentence <em>says</em> with how an app draws it. You can open it
+        decades from now, pipe it through a terminal, hand it to a typesetter,
+        or feed it to a model — same bytes, same meaning.
+      </p>
+      <ul>
+        <li>Longevity: every computer already speaks it.</li>
+        <li>Freedom: your manuscript is not locked inside one word processor.</li>
+        <li>Power: small tools compose, because they share one language.</li>
+      </ul>
+      <p class="note">
+        <a href="https://markbreak.com">MarkBreak</a> keeps a manuscript’s roles
+        and page breaks inside that format, where they belong.
+      </p>
+    </section>
+
+    <section id="mission">
+      <h2>The mission</h2>
+      <blockquote>
+        A manuscript should say what it is, and where it breaks,<br />
+        without asking an app to remember for it.
+      </blockquote>
+      <p>
+        That is the whole mission. Standard Markdown never recorded a print
+        <code>role</code>, and never recorded a flow break — so “chapter”, “epilog”,
+        and “turn the page” lived as formatting, memory, or folklore. MarkBreak
+        puts them back in the file, in plain text, where they belong.
+      </p>
+    </section>
+
+    <section id="broke">
+      <h2>What we broke</h2>
+      <ul>
+        <li><code>---</code> stays a pause in the scene — Markdown never had a page break. <code>//break</code> is the one that turns the page.</li>
+        <li>A heading no longer has to guess a file's print role. The <code>role</code> says it, once, in the front matter.</li>
+        <li>“New page” is no longer a button pressed inside one app and forgotten by the file. It is a line of text anyone can see.</li>
+      </ul>
+    </section>
+
+    <section id="refused">
+      <h2>What we refused to break</h2>
+      <p>
+        We did not invent a rival language. We did not trap a book in a binary
+        format, a database, or a subscription. MarkBreak is Pandoc Markdown —
+        readable as ordinary text. Processors that meet an unknown line may
+        ignore it; humans never have to.
+      </p>
+    </section>
+
+    <section id="name">
+      <h2>The name</h2>
+      <p>
+        <strong>Mark</strong>: Markdown, and the author's mark on a manuscript —
+        <em>this is a chapter, start here.</em>
+        <strong>Break</strong>: <code>//break</code>, the break the file itself can say.
+      </p>
+    </section>
+
+    <section id="creed">
+      <h2>Our creed</h2>
+      <p>
+        Write plain. Mark the role. Break the page — in the file.<br />
+        Then let Word, InDesign, or the press do the dressing up.
+      </p>
+      <p>
+        Read the <a href="https://markbreak.com/specification.md">specification</a>,
+        check the <a href="https://github.com/13-Books/markbreak">source</a>,
+        or open a manuscript and type <code>//break</code> on its own line.
+      </p>
+    </section>
+
+    <footer>
+      <p class="copy">© 2026 Plain Text Humans</p>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var fluos = ["#ffff33", "#ff4dce", "#39ff14"];
+      function randFluo() {
+        return fluos[Math.floor(Math.random() * fluos.length)];
+      }
+      function paint(el) {
+        el.style.backgroundColor = randFluo();
+        el.style.borderColor = "transparent";
+        el.style.outline = "none";
+        el.style.boxShadow = "none";
+        el.classList.add("is-fluo");
+      }
+      function clearPaint(el) {
+        el.style.backgroundColor = "";
+        el.style.borderColor = "";
+        el.style.outline = "";
+        el.style.boxShadow = "";
+        el.classList.remove("is-fluo");
+      }
+
+      document.querySelectorAll(".brand, .menu a, .cta a, main a, section h2, code").forEach(function (el) {
+        el.addEventListener("mouseenter", function () { paint(el); });
+        el.addEventListener("mouseleave", function () { clearPaint(el); });
+      });
+    })();
+  </script>
+</body>
+</html>

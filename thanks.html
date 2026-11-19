@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank you · Plain Text Humans</title>
+  <meta name="description" content="Thank you for supporting Plain Text Humans." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --field: #fff;
+      --ink: #000;
+      --muted: #222;
+      --link: #000;
+      --rule: #000;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
+      background: var(--field);
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 1.02rem;
+    }
+    a, a:visited {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 0.14em;
+    }
+    a:hover { color: var(--ink); }
+
+    .wrap {
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 1rem;
+      row-gap: 0.2rem;
+      margin: 0 0 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    @media (max-width: 640px) {
+      .menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .menu a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+    }
+    .menu a::before { content: "→ "; }
+    .menu a.is-fluo,
+    a.is-fluo {
+      color: #000;
+      text-decoration: none;
+      border-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
+
+    .brand {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 600;
+      font-size: clamp(1.55rem, 4.2vw, 2.15rem);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0 0 0.85rem;
+      display: inline;
+      background: #000;
+      color: #fff;
+      padding: 0.1em 0.28em;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .brand.is-fluo { color: #000; border: none; outline: none; }
+
+    .lede {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin: 1.1rem 0 1rem;
+      max-width: 36rem;
+    }
+    .body {
+      color: var(--muted);
+      margin: 0 0 1.75rem;
+      max-width: 36rem;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 2rem;
+    }
+    .cta a,
+    .cta a:visited {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.8rem;
+      color: #fff;
+      background: #000;
+      border: 1px solid #000;
+      text-decoration: none;
+      padding: 0.4rem 0.7rem;
+      display: inline-block;
+      transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+    }
+    .cta a:hover { color: #fff; }
+    .cta a.is-fluo {
+      color: #000;
+      border-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    footer .copy { margin: 0; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav class="menu" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#plain">Why plain text</a>
+      <a href="https://markbreak.com">Meet MarkBreak</a>
+      <a href="https://markbreak.app">Write with us</a>
+      <a href="https://markbreak.com/specification.md">Specification</a>
+    </nav>
+
+    <p class="brand">Plain Text Humans</p>
+    <h1 class="lede">Thank you.</h1>
+    <p class="body">
+      You’re one of us now.
+    </p>
+    <div class="cta">
+      <a href="shop.html">Back to shop</a>
+      <a href="index.html">Home</a>
+      <a href="https://markbreak.app">Write with us ↗</a>
+    </div>
+
+    <footer>
+      <p class="copy">© 2026 Plain Text Humans</p>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var fluos = ["#ffff33", "#ff4dce", "#39ff14"];
+      function randFluo() {
+        return fluos[Math.floor(Math.random() * fluos.length)];
+      }
+      function paint(el) {
+        el.style.backgroundColor = randFluo();
+        el.style.borderColor = "transparent";
+        el.style.outline = "none";
+        el.style.boxShadow = "none";
+        el.classList.add("is-fluo");
+      }
+      function clearPaint(el) {
+        el.style.backgroundColor = "";
+        el.style.borderColor = "";
+        el.style.outline = "";
+        el.style.boxShadow = "";
+        el.classList.remove("is-fluo");
+      }
+
+      document.querySelectorAll(".brand, .menu a, .cta a").forEach(function (el) {
+        el.addEventListener("mouseenter", function () { paint(el); });
+        el.addEventListener("mouseleave", function () { clearPaint(el); });
+      });
+    })();
+  </script>
+</body>
+</html>
