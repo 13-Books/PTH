@@ -7,10 +7,10 @@
   <meta name="description" content="Plain Text Humans: we still write in plain text — and MarkBreak manuscripts that say what they are and where they break." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --field: #fff;
+      --field: #fff; /* same as markbreak.com footer */
       --ink: #000;
       --muted: #222;
       --link: #000;
@@ -77,8 +77,8 @@
       font-family: "IBM Plex Mono", monospace;
       font-weight: 600;
       font-size: clamp(1.55rem, 4.2vw, 2.15rem);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
       margin: 0 0 0.85rem;
       display: inline;
       background: #000;
@@ -91,7 +91,7 @@
     }
     .brand.is-fluo { color: #000; border: none; outline: none; }
     h1.lede {
-      font-family: "IBM Plex Mono", monospace;
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
       font-weight: 500;
       font-size: 1.05rem;
       color: var(--ink);
@@ -101,7 +101,7 @@
     }
 
     .note {
-      font-family: "IBM Plex Mono", monospace;
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
       font-size: 0.88rem;
       color: var(--ink);
       margin: 1rem 0 0;
@@ -121,7 +121,7 @@
       animation: in 0.5s ease 0.18s both;
     }
     .cta a {
-      font-family: "IBM Plex Mono", monospace;
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
       font-size: 0.8rem;
       color: #fff;
       background: #000;
@@ -146,7 +146,7 @@
     section:nth-of-type(6) { animation-delay: 0.4s; }
 
     section h2 {
-      font-family: "IBM Plex Mono", monospace;
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
       font-size: 0.88rem;
       font-weight: 600;
       letter-spacing: 0.03em;
@@ -187,7 +187,7 @@
       font-weight: 500;
     }
     code {
-      font-family: "IBM Plex Mono", monospace;
+      font-family: ui-monospace, "Cascadia Code", monospace;
       font-size: 0.86em;
       background: transparent;
       padding: 0.06em 0.28em;
@@ -204,8 +204,8 @@
       margin-top: 2rem;
       padding-top: 1rem;
       border-top: 1px solid var(--rule);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.75rem;
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
+      font-size: 0.875rem;
       color: var(--muted);
     }
     footer .copy { margin: 0; }
@@ -316,7 +316,7 @@
     </section>
 
     <footer>
-      <p class="copy">© 2026 Plain Text Humans</p>
+      <p class="copy">© 2026 <a href="https://plaintexthumans.com">Plain Text Humans</a></p>
     </footer>
   </main>
   <script>
